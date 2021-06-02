@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Posts</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="exit"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-textarea [(ngModel)]="message" placeholder="Digite seu post" autoGrow></ion-textarea>
+      </ion-item>
+      <ion-row>
+        <ion-col></ion-col>
+        <ion-col size="auto">
+          <ion-button (click)="publish()">Publicar </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngFor="let post of posts$ | async">
+    <ion-card-content>
+      <ion-row>
+        <ion-col size="auto">
+          <ion-avatar>
+            <img [src]="'//github.com/'+post.user+ '.png'" />
+          </ion-avatar>
+        </ion-col>
+        <ion-col>
+          <ion-row class="ion-align-items-center">
+            <ion-col>
+              <h3><strong>{{post.user}}</strong></h3>
+            </ion-col>
+            <ion-col style="margin-left: auto" size="auto"><small>{{post.timestamp.toDate() | date}}</small></ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <p>{{post.message}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

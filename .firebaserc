@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ionic-anhembi-2021-1": {
+      "hosting": {
+        "app": [
+          "ionic-anhembi-2021-1"
+        ]
+      }
+    }
+  }
+}
